@@ -2,8 +2,40 @@ package com.leafriend.kspay.receiver;
 
 import java.io.EOFException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Header {
+
+    public static enum EncryptionType {
+
+        NONE,
+
+        OPENSSL,
+
+        SEED,
+
+    }
+
+    public static enum KeyInType {
+
+        SWAP,
+
+        KEYIN,
+
+    }
+
+    public static enum LineType {
+
+        OFFLINE,
+
+        INTERNET,
+
+        MOBILE,
+
+    }
+
     /**
      * 길이
      */
@@ -118,8 +150,104 @@ public class Header {
     }
 
     public int getLength() {
-        // TODO Auto-generated method stub
-        return 0;
+        return Integer.parseInt(_RecvLen);
+    }
+
+    public EncryptionType getEncryptionType() {
+        if ("0".equals(_EncType))
+            return EncryptionType.NONE;
+        if ("1".equals(_EncType))
+            return EncryptionType.OPENSSL;
+        if ("2".equals(_EncType))
+            return EncryptionType.SEED;
+        return null;
+    }
+
+    public String getVersion() {
+        return _Version.trim();
+    }
+
+    public String getVersionType() {
+        return _VersionType.trim();
+    }
+
+    public boolean isResend() {
+        if ("0".equals(_Resend))
+            return false;
+        if ("2".equals(_Resend))
+            return true;
+        throw new RuntimeException("Unsupported resend type: " + _Resend);
+    }
+
+    public Date getRequestDate() {
+        try {
+            return new SimpleDateFormat("yyyyMMddHHmmss").parse(_RequestDate);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String getStoreId() {
+        return _StoreId.trim();
+    }
+
+    public String getOrderNo() {
+        return _OrderNumber.trim();
+    }
+
+    public String getBuyerName() {
+        return _UserName.trim();
+    }
+
+    public String getBuyerId() {
+        return _IdNum.trim();
+    }
+
+    public String getBuyerEmail() {
+        return _Email.trim();
+    }
+
+    public boolean isPhysicalProduct() {
+        return "0".equals(_GoodType);
+    }
+
+    public boolean isDigitalProduct() {
+        return "1".equals(_GoodType);
+    }
+
+    public String getProductName() {
+        return _GoodName.trim();
+    }
+
+    public KeyInType getKeyInType() {
+        if ("1".equals(this._KeyInType))
+            return KeyInType.SWAP;
+        // FIXME 원본 소스의 주석은 KeyIn이 "2"라고 되어 있으나 원본 테스트에서는 "K"로 전달
+        if ("K".equals(this._KeyInType))
+            return KeyInType.KEYIN;
+        return null;
+    }
+
+    public LineType getLineType() {
+        if ("0".equals(this._LineType))
+            return LineType.OFFLINE;
+        if ("1".equals(this._LineType))
+            return LineType.INTERNET;
+        if ("2".equals(this._LineType))
+            return LineType.MOBILE;
+        return null;
+    }
+
+    public String getBuyerMobile() {
+        return _PhoneNo.trim();
+    }
+
+    public int getApprovedCount() {
+        return Integer.parseInt(_ApprovalCount);
+    }
+
+    public String getRemark() {
+        return _HeadFiller.trim();
     }
 
 }
