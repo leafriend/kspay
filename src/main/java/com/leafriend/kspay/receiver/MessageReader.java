@@ -113,7 +113,7 @@ public class MessageReader implements Closeable {
         int readLength = input.read(preface, cursor, length);
         cursor += readLength;
         if (readLength != length)
-            throw new EOFException("Failed to read " + length + " byte(s)");
+            throw new EOFException("Failed to read " + length + " byte(s) - read byte count: " + readLength);
 
         byte[] readBytes = new byte[length];
         System.arraycopy(preface, cursor - readLength, readBytes, 0, length);
