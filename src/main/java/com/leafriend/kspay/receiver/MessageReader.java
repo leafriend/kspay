@@ -20,6 +20,8 @@ import java.util.Arrays;
  */
 public class MessageReader implements Closeable {
 
+    public static final Charset DEFAULT_CHARSET = Charset.forName("KSC5601");
+
     private final InputStream input;
 
     private Charset charset;

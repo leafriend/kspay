@@ -24,7 +24,7 @@ public class MessageReaderTest {
     @Before
     public void setUp() {
         input = new ByteArrayInputStream(MESSAGE.getBytes());
-        reader = new MessageReader(input, "KSC5601");
+        reader = new MessageReader(input, MessageReader.DEFAULT_CHARSET);
     }
 
     @Test

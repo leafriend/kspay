@@ -46,9 +46,9 @@ public class HeaderTest {
     }
 
     private Header generateHeader(String message) throws EOFException, IOException {
-        byte[] buf = message.getBytes("KSC5601");
+        byte[] buf = message.getBytes(MessageReader.DEFAULT_CHARSET);
         InputStream input = new ByteArrayInputStream(buf);
-        MessageReader reader = new MessageReader(input, "KSC5601");
+        MessageReader reader = new MessageReader(input, MessageReader.DEFAULT_CHARSET);
         Header header = Header.parse(reader);
         return header;
     }
