@@ -46,7 +46,7 @@ public class ReceiverTest {
             }
 
         };
-        receiver = new Receiver(input, output, handler);
+        receiver = new Receiver(false, null, input, output, handler);
     }
 
     @After

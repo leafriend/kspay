@@ -29,6 +29,10 @@ public class Receiver implements Runnable {
 
     static final byte NAK = 0x15;
 
+    private final boolean parseOpCode;
+
+    private final Daemon daemon;
+
     private final InputStream input;
 
     private final OutputStream output;
@@ -37,7 +41,8 @@ public class Receiver implements Runnable {
 
     /**
      * 주어진 입/출력스트림으로 수/송신하고, 주어진 처리기로 해석한 전문을 처리하는 인스턴스를 생성한다.
-     *
+     * @param parseOpCode TODO
+     * @param daemon TODO
      * @param input
      *            수신용 입력스트림
      * @param output
@@ -45,11 +50,13 @@ public class Receiver implements Runnable {
      * @param handlers
      *            전문을 처리할 처리기 배열
      */
-    public Receiver(InputStream input, OutputStream output, MessageHandler... handlers) {
+    public Receiver(boolean parseOpCode, Daemon daemon, InputStream input, OutputStream output, MessageHandler... handlers) {
         if (input == null)
             throw new IllegalArgumentException("Argument input can't be null");
         if (output == null)
             throw new IllegalArgumentException("Argument output can't be null");
+        this.parseOpCode = parseOpCode;
+        this.daemon = daemon;
         this.input = input;
         this.output = output;
         this.handlers = Arrays.asList(handlers);
@@ -75,7 +82,7 @@ public class Receiver implements Runnable {
 
     void parseAndHandle() throws EOFException, IOException {
         MessageReader reader = new MessageReader(input, DEFAULT_CHARSET);
-        Message message = MessageParser.parse(reader);
+        Message message = MessageParser.parse(reader, parseOpCode);
         for (MessageHandler handler : handlers) {
             try {
                 if (handler.isHandleable(message))
@@ -83,6 +90,9 @@ public class Receiver implements Runnable {
             } catch (RuntimeException e) {
                 LOGGER.error("Failed to handle", e);
             }
+        }
+        if (message instanceof ShutdownMessage) {
+            daemon.stop();
         }
     }
 

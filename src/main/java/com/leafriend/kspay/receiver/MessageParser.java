@@ -23,6 +23,8 @@ public class MessageParser {
      *
      * @param reader
      *            바이트 배열을 읽을 리더
+     * @param parseOpCode
+     *            TODO
      *
      * @return 바이트 배열에서 해석한 전문 인스턴스; 해석하지 못한 경우 <code>null</code>
      *
@@ -31,9 +33,15 @@ public class MessageParser {
      * @throws IOException
      *             리더에서 바이트 배열을 읽다 예외가 발생한 경우 발생
      */
-    public static Message parse(MessageReader reader) throws EOFException, IOException {
+    public static Message parse(MessageReader reader, boolean parseOpCode) throws EOFException, IOException {
 
         Message message;
+
+        if (parseOpCode) {
+            message = parseOpCode(reader);
+            if (message != NOT_PARSED)
+                return message;
+        }
 
         message = parseOldMessage(reader);
         if (message != NOT_PARSED)
@@ -45,6 +53,12 @@ public class MessageParser {
 
         return NOT_PARSED;
 
+    }
+
+    private static Message parseOpCode(MessageReader reader) throws EOFException, IOException {
+        if (reader.readBytes(1)[0] == (byte) 0x1B)
+            return new ShutdownMessage();
+        return NOT_PARSED;
     }
 
     static Message parseOldMessage(MessageReader reader) throws EOFException, IOException {
