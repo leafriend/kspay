@@ -128,7 +128,7 @@ public class Header {
 
     public static Header parse(MessageReader reader) throws EOFException, IOException {
         Header instance = new Header();
-        instance._RecvLen = reader.read(4);
+        instance._RecvLen = reader.getPreface();
         instance._EncType = reader.read(1);
         instance._Version = reader.read(4);
         instance._VersionType = reader.read(2);

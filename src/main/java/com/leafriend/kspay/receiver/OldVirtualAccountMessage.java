@@ -172,7 +172,7 @@ public class OldVirtualAccountMessage implements Message {
 
     public static OldVirtualAccountMessage parse(MessageReader reader) throws EOFException, IOException {
         OldVirtualAccountMessage instance = new OldVirtualAccountMessage();
-        instance._busi_sele = reader.read(2);
+        instance._busi_sele = reader.getPreface();
         instance._rVTransactionNo = reader.read(12);
         instance._deal_code = reader.read(9);
         instance._comp_code = reader.read(8);

@@ -57,7 +57,7 @@ public class OldCreditCardMessage implements Message {
 
     public static OldCreditCardMessage parse(MessageReader reader) throws EOFException, IOException {
         OldCreditCardMessage instance = new OldCreditCardMessage();
-        instance._busi_sele = reader.read(2);
+        instance._busi_sele = reader.getPreface();
         instance._err_cd = reader.read(1);
         instance._trade_date = reader.read(12);
         instance._make_comp_gove_code = reader.read(2);
