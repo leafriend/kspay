@@ -96,24 +96,24 @@ public class Header {
 
     public static Header parse(MessageReader reader) throws EOFException, IOException {
         Header instance = new Header();
-        instance.RecvLen = new String(reader.read(4));
-        instance.EncType = new String(reader.read(1));
-        instance.Version = new String(reader.read(4));
-        instance.VersionType = new String(reader.read(2));
-        instance.Resend = new String(reader.read(1));
-        instance.RequestDate = new String(reader.read(14));
-        instance.StoreId = new String(reader.read(10));
-        instance.OrderNumber = new String(reader.read(50));
-        instance.UserName = new String(reader.read(50));
-        instance.IdNum = new String(reader.read(13));
-        instance.Email = new String(reader.read(50));
-        instance.GoodType = new String(reader.read(1));
-        instance.GoodName = new String(reader.read(50));
-        instance.KeyInType = new String(reader.read(1));
-        instance.LineType = new String(reader.read(1));
-        instance.PhoneNo = new String(reader.read(12));
-        instance.ApprovalCount = new String(reader.read(1));
-        instance.HeadFiller = new String(reader.read(35));
+        instance.RecvLen = reader.read(4);
+        instance.EncType = reader.read(1);
+        instance.Version = reader.read(4);
+        instance.VersionType = reader.read(2);
+        instance.Resend = reader.read(1);
+        instance.RequestDate = reader.read(14);
+        instance.StoreId = reader.read(10);
+        instance.OrderNumber = reader.read(50);
+        instance.UserName = reader.read(50);
+        instance.IdNum = reader.read(13);
+        instance.Email = reader.read(50);
+        instance.GoodType = reader.read(1);
+        instance.GoodName = reader.read(50);
+        instance.KeyInType = reader.read(1);
+        instance.LineType = reader.read(1);
+        instance.PhoneNo = reader.read(12);
+        instance.ApprovalCount = reader.read(1);
+        instance.HeadFiller = reader.read(35);
         return instance;
     }
 
