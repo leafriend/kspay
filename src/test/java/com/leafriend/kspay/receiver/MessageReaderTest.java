@@ -51,10 +51,4 @@ public class MessageReaderTest {
 
     }
 
-    @Test
-    public void t() {
-        Charset charset = Charset.forName("UNKNOWN");
-        new String(new byte[0], charset);
-    }
-
 }
