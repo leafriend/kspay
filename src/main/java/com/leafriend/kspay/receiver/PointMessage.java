@@ -8,119 +8,119 @@ public class PointMessage implements Message {
     /**
      * 0~: 적립, 1~: 사용 / ~0: 승인, ~1: 취소
      */
-    private String rApprovalType;
+    private String _rApprovalType;
 
     /**
      * 거래번호
      */
-    private String rPTransactionNo;
+    private String _rPTransactionNo;
 
     /**
      * 상태 O : 승인 , X : 거절
      */
-    private String rPStatus;
+    private String _rPStatus;
 
     /**
      * 거래일자
      */
-    private String rPTradeDate;
+    private String _rPTradeDate;
 
     /**
      * 거래시간
      */
-    private String rPTradeTime;
+    private String _rPTradeTime;
 
     /**
      * 발급사코드
      */
-    private String rPIssCode;
+    private String _rPIssCode;
 
     /**
      * 승인번호 or 거절시 오류코드
      */
-    private String rPAuthNo;
+    private String _rPAuthNo;
 
     /**
      * 메시지1
      */
-    private String rPMessage1;
+    private String _rPMessage1;
 
     /**
      * 메시지2
      */
-    private String rPMessage2;
+    private String _rPMessage2;
 
     /**
      * 거래포인트
      */
-    private String rPPoint1;
+    private String _rPPoint1;
 
     /**
      * 가용포인트
      */
-    private String rPPoint2;
+    private String _rPPoint2;
 
     /**
      * 누적포인트
      */
-    private String rPPoint3;
+    private String _rPPoint3;
 
     /**
      * 가맹점포인트
      */
-    private String rPPoint4;
+    private String _rPPoint4;
 
     /**
      * 포인트가맹점번호
      */
-    private String rPMerchantNo;
+    private String _rPMerchantNo;
 
     /**
      * 전표출력1
      */
-    private String rPNotice1;
+    private String _rPNotice1;
 
     /**
      * 전표출력2
      */
-    private String rPNotice2;
+    private String _rPNotice2;
 
     /**
      * 전표출력3
      */
-    private String rPNotice3;
+    private String _rPNotice3;
 
     /**
      * 전표출력4
      */
-    private String rPNotice4;
+    private String _rPNotice4;
 
     /**
      * 예비
      */
-    private String rPFiller;
+    private String _rPFiller;
 
     public static PointMessage parse(Header header, MessageReader reader) throws EOFException, IOException {
         PointMessage instance = new PointMessage();
-        instance.rApprovalType = reader.read(4);
-        instance.rPTransactionNo = reader.read(12);
-        instance.rPStatus = reader.read(1);
-        instance.rPTradeDate = reader.read(8);
-        instance.rPTradeTime = reader.read(6);
-        instance.rPIssCode = reader.read(6);
-        instance.rPAuthNo = reader.read(12);
-        instance.rPMessage1 = reader.read(16);
-        instance.rPMessage2 = reader.read(16);
-        instance.rPPoint1 = reader.read(9);
-        instance.rPPoint2 = reader.read(9);
-        instance.rPPoint3 = reader.read(9);
-        instance.rPPoint4 = reader.read(9);
-        instance.rPMerchantNo = reader.read(15);
-        instance.rPNotice1 = reader.read(40);
-        instance.rPNotice2 = reader.read(40);
-        instance.rPNotice3 = reader.read(40);
-        instance.rPNotice4 = reader.read(40);
-        instance.rPFiller = reader.read(header.getLength() - reader.getPrefaceBytes().length);
+        instance._rApprovalType = reader.read(4);
+        instance._rPTransactionNo = reader.read(12);
+        instance._rPStatus = reader.read(1);
+        instance._rPTradeDate = reader.read(8);
+        instance._rPTradeTime = reader.read(6);
+        instance._rPIssCode = reader.read(6);
+        instance._rPAuthNo = reader.read(12);
+        instance._rPMessage1 = reader.read(16);
+        instance._rPMessage2 = reader.read(16);
+        instance._rPPoint1 = reader.read(9);
+        instance._rPPoint2 = reader.read(9);
+        instance._rPPoint3 = reader.read(9);
+        instance._rPPoint4 = reader.read(9);
+        instance._rPMerchantNo = reader.read(15);
+        instance._rPNotice1 = reader.read(40);
+        instance._rPNotice2 = reader.read(40);
+        instance._rPNotice3 = reader.read(40);
+        instance._rPNotice4 = reader.read(40);
+        instance._rPFiller = reader.read(header.getLength() - reader.getPrefaceBytes().length);
         return instance;
     }
 

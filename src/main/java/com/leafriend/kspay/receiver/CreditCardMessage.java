@@ -7,167 +7,167 @@ public class CreditCardMessage implements Message {
     /**
      *
      */
-    private String rApprovalType;
+    private String _rApprovalType;
 
     /**
      * 거래번호
      */
-    private String rTransactionNo;
+    private String _rTransactionNo;
 
     /**
      * 상태 O : 승인, X : 거절
      */
-    private String rStatus;
+    private String _rStatus;
 
     /**
      * 거래일자
      */
-    private String rTradeDate;
+    private String _rTradeDate;
 
     /**
      * 거래시간
      */
-    private String rTradeTime;
+    private String _rTradeTime;
 
     /**
      * 발급사코드
      */
-    private String rIssCode;
+    private String _rIssCode;
 
     /**
      * 매입사코드
      */
-    private String rAquCode;
+    private String _rAquCode;
 
     /**
      * 승인번호 or 거절시 오류코드
      */
-    private String rAuthNo;
+    private String _rAuthNo;
 
     /**
      * 메시지1
      */
-    private String rMessage1;
+    private String _rMessage1;
 
     /**
      * 메시지2
      */
-    private String rMessage2;
+    private String _rMessage2;
 
     /**
      * 카드번호
      */
-    private String rCardNo;
+    private String _rCardNo;
 
     /**
      * 유효기간
      */
-    private String rExpDate;
+    private String _rExpDate;
 
     /**
      * 할부
      */
-    private String rInstallment;
+    private String _rInstallment;
 
     /**
      * 금액
      */
-    private String rAmount;
+    private String _rAmount;
 
     /**
      * 가맹점번호
      */
-    private String rMerchantNo;
+    private String _rMerchantNo;
 
     /**
      * 전송구분
      */
-    private String rAuthSendType;
+    private String _rAuthSendType;
 
     /**
      * 전송구분(0 : 거절, 1 : 승인, 2: 원카드)
      */
-    private String rApprovalSendType;
+    private String _rApprovalSendType;
 
     /**
      * Point1
      */
-    private String rPoint1;
+    private String _rPoint1;
 
     /**
      * Point2
      */
-    private String rPoint2;
+    private String _rPoint2;
 
     /**
      * Point3
      */
-    private String rPoint3;
+    private String _rPoint3;
 
     /**
      * Point4
      */
-    private String rPoint4;
+    private String _rPoint4;
 
     /**
      * Van거래번호
      */
-    private String rVanTransactionNo;
+    private String _rVanTransactionNo;
 
     /**
      * 예비
      */
-    private String rFiller;
+    private String _rFiller;
 
     /**
      * ISP : ISP거래, MP1, MP2 : MPI거래, SPACE : 일반거래
      */
-    private String rAuthType;
+    private String _rAuthType;
 
     /**
      * K : KSNET, R : Remote, C : 제3기관, SPACE : 일반거래
      */
-    private String rMPIPositionType;
+    private String _rMPIPositionType;
 
     /**
      * Y : 재사용, N : 재사용아님
      */
-    private String rMPIReUseType;
+    private String _rMPIReUseType;
 
     /**
      * 예비
      */
-    private String rFiller_1;
+    private String _rFiller_1;
 
     public static CreditCardMessage parse(Header header, MessageReader reader) throws EOFException, IOException {
         CreditCardMessage instance = new CreditCardMessage();
-        instance.rApprovalType = reader.read(4);
-        instance.rTransactionNo = reader.read(12);
-        instance.rStatus = reader.read(1);
-        instance.rTradeDate = reader.read(8);
-        instance.rTradeTime = reader.read(6);
-        instance.rIssCode = reader.read(6);
-        instance.rAquCode = reader.read(6);
-        instance.rAuthNo = reader.read(12);
-        instance.rMessage1 = reader.read(16);
-        instance.rMessage2 = reader.read(16);
-        instance.rCardNo = reader.read(16);
-        instance.rExpDate = reader.read(4);
-        instance.rInstallment = reader.read(2);
-        instance.rAmount = reader.read(9);
-        instance.rMerchantNo = reader.read(15);
-        instance.rAuthSendType = reader.read(1);
-        instance.rApprovalSendType = reader.read(1);
-        instance.rPoint1 = reader.read(12);
-        instance.rPoint2 = reader.read(12);
-        instance.rPoint3 = reader.read(12);
-        instance.rPoint4 = reader.read(12);
-        instance.rVanTransactionNo = reader.read(12);
-        instance.rFiller = reader.read(82);
-        instance.rAuthType = reader.read(1);
-        instance.rMPIPositionType = reader.read(1);
-        instance.rMPIReUseType = reader.read(1);
-        instance.rFiller_1 = reader.read(header.getLength() - reader.getPrefaceBytes().length);
+        instance._rApprovalType = reader.read(4);
+        instance._rTransactionNo = reader.read(12);
+        instance._rStatus = reader.read(1);
+        instance._rTradeDate = reader.read(8);
+        instance._rTradeTime = reader.read(6);
+        instance._rIssCode = reader.read(6);
+        instance._rAquCode = reader.read(6);
+        instance._rAuthNo = reader.read(12);
+        instance._rMessage1 = reader.read(16);
+        instance._rMessage2 = reader.read(16);
+        instance._rCardNo = reader.read(16);
+        instance._rExpDate = reader.read(4);
+        instance._rInstallment = reader.read(2);
+        instance._rAmount = reader.read(9);
+        instance._rMerchantNo = reader.read(15);
+        instance._rAuthSendType = reader.read(1);
+        instance._rApprovalSendType = reader.read(1);
+        instance._rPoint1 = reader.read(12);
+        instance._rPoint2 = reader.read(12);
+        instance._rPoint3 = reader.read(12);
+        instance._rPoint4 = reader.read(12);
+        instance._rVanTransactionNo = reader.read(12);
+        instance._rFiller = reader.read(82);
+        instance._rAuthType = reader.read(1);
+        instance._rMPIPositionType = reader.read(1);
+        instance._rMPIReUseType = reader.read(1);
+        instance._rFiller_1 = reader.read(header.getLength() - reader.getPrefaceBytes().length);
         return instance;
     }
 

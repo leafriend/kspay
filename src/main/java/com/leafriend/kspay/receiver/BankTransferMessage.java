@@ -8,131 +8,131 @@ public class BankTransferMessage implements Message {
     /**
      * ~0 : 승인, ~1 : 취소
      */
-    private String rApprovalType;
+    private String _rApprovalType;
 
     /**
      * 거래번호
      */
-    private String rACTransactionNo;
+    private String _rACTransactionNo;
 
     /**
      * 오류구분 O:승인 X:거절
      */
-    private String rACStatus;
+    private String _rACStatus;
 
     /**
      * 거래 개시 일자(YYYYMMDD)
      */
-    private String rACTradeDate;
+    private String _rACTradeDate;
 
     /**
      * 거래 개시 시간(HHMMSS)
      */
-    private String rACTradeTime;
+    private String _rACTradeTime;
 
     /**
      * 계좌이체 구분 - 1:Dacom, 2:Pop Banking, 3:실시간계좌이체 4: 승인형계좌이체
      */
-    private String rACAcctSele;
+    private String _rACAcctSele;
 
     /**
      * 선/후불제구분 - 1:선불, 2:후불
      */
-    private String rACFeeSele;
+    private String _rACFeeSele;
 
     /**
      * 인자명(통장인쇄메세지-상점명)
      */
-    private String rACInjaName;
+    private String _rACInjaName;
 
     /**
      * 입금모계좌코드
      */
-    private String rACPareBankCode;
+    private String _rACPareBankCode;
 
     /**
      * 입금모계좌번호
      */
-    private String rACPareAcctNo;
+    private String _rACPareAcctNo;
 
     /**
      * 출금모계좌코드
      */
-    private String rACCustBankCode;
+    private String _rACCustBankCode;
 
     /**
      * 출금모계좌번호
      */
-    private String rACCustAcctNo;
+    private String _rACCustAcctNo;
 
     /**
      * 금액 (결제대상금액)
      */
-    private String rACAmount;
+    private String _rACAmount;
 
     /**
      * 은행거래번호
      */
-    private String rACBankTransactionNo;
+    private String _rACBankTransactionNo;
 
     /**
      * 입금자명
      */
-    private String rACIpgumNm;
+    private String _rACIpgumNm;
 
     /**
      * 계좌이체 수수료
      */
-    private String rACBankFee;
+    private String _rACBankFee;
 
     /**
      * 총결제금액(결제대상금액+ 수수료
      */
-    private String rACBankAmount;
+    private String _rACBankAmount;
 
     /**
      * 오류코드
      */
-    private String rACBankRespCode;
+    private String _rACBankRespCode;
 
     /**
      * 오류 message 1
      */
-    private String rACMessage1;
+    private String _rACMessage1;
 
     /**
      * 오류 message 2
      */
-    private String rACMessage2;
+    private String _rACMessage2;
 
     /**
      * 예비
      */
-    private String rACFiller;
+    private String _rACFiller;
 
     public static BankTransferMessage parse(Header header, MessageReader reader) throws EOFException, IOException {
         BankTransferMessage instance = new BankTransferMessage();
-        instance.rApprovalType = reader.read(4);
-        instance.rACTransactionNo = reader.read(12);
-        instance.rACStatus = reader.read(1);
-        instance.rACTradeDate = reader.read(8);
-        instance.rACTradeTime = reader.read(6);
-        instance.rACAcctSele = reader.read(1);
-        instance.rACFeeSele = reader.read(1);
-        instance.rACInjaName = reader.read(16);
-        instance.rACPareBankCode = reader.read(6);
-        instance.rACPareAcctNo = reader.read(15);
-        instance.rACCustBankCode = reader.read(6);
-        instance.rACCustAcctNo = reader.read(15);
-        instance.rACAmount = reader.read(13);
-        instance.rACBankTransactionNo = reader.read(30);
-        instance.rACIpgumNm = reader.read(20);
-        instance.rACBankFee = reader.read(13);
-        instance.rACBankAmount = reader.read(13);
-        instance.rACBankRespCode = reader.read(4);
-        instance.rACMessage1 = reader.read(16);
-        instance.rACMessage2 = reader.read(16);
-        instance.rACFiller = reader.read(header.getLength() - reader.getPrefaceBytes().length);
+        instance._rApprovalType = reader.read(4);
+        instance._rACTransactionNo = reader.read(12);
+        instance._rACStatus = reader.read(1);
+        instance._rACTradeDate = reader.read(8);
+        instance._rACTradeTime = reader.read(6);
+        instance._rACAcctSele = reader.read(1);
+        instance._rACFeeSele = reader.read(1);
+        instance._rACInjaName = reader.read(16);
+        instance._rACPareBankCode = reader.read(6);
+        instance._rACPareAcctNo = reader.read(15);
+        instance._rACCustBankCode = reader.read(6);
+        instance._rACCustAcctNo = reader.read(15);
+        instance._rACAmount = reader.read(13);
+        instance._rACBankTransactionNo = reader.read(30);
+        instance._rACIpgumNm = reader.read(20);
+        instance._rACBankFee = reader.read(13);
+        instance._rACBankAmount = reader.read(13);
+        instance._rACBankRespCode = reader.read(4);
+        instance._rACMessage1 = reader.read(16);
+        instance._rACMessage2 = reader.read(16);
+        instance._rACFiller = reader.read(header.getLength() - reader.getPrefaceBytes().length);
         return instance;
     }
 

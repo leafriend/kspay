@@ -8,65 +8,65 @@ public class OldCreditCardMessage implements Message {
     /**
      * ~B:승인요청, ~D:취소응답
      */
-    private String busi_sele;
+    private String _busi_sele;
 
     /**
      * 오류코드 O, X
      */
-    private String err_cd;
+    private String _err_cd;
 
     /**
      * 거래일시 (YYYYMMDDHHMM)
      */
-    private String trade_date;
+    private String _trade_date;
 
     /**
      * 발급기관코드
      */
-    private String make_comp_gove_code;
+    private String _make_comp_gove_code;
 
     /**
      * 매입 기관 코드
      */
-    private String purc_gove_code;
+    private String _purc_gove_code;
 
     /**
      * 승인번호 - 오류시 오류코드
      */
-    private String appr_numb;
+    private String _appr_numb;
 
     /**
      * 거래번호
      */
-    private String pg_deal_numb;
+    private String _pg_deal_numb;
 
     /**
      * 주문번호
      */
-    private String regi_id;
+    private String _regi_id;
 
     /**
      * 응답 message1
      */
-    private String resp_mesg_1;
+    private String _resp_mesg_1;
 
     /**
      * 응답 message2
      */
-    private String resp_mesg_2;
+    private String _resp_mesg_2;
 
     public static OldCreditCardMessage parse(MessageReader reader) throws EOFException, IOException {
         OldCreditCardMessage instance = new OldCreditCardMessage();
-        instance.busi_sele = reader.read(2);
-        instance.err_cd = reader.read(1);
-        instance.trade_date = reader.read(12);
-        instance.make_comp_gove_code = reader.read(2);
-        instance.purc_gove_code = reader.read(2);
-        instance.appr_numb = reader.read(8);
-        instance.pg_deal_numb = reader.read(12);
-        instance.regi_id = reader.read(30);
-        instance.resp_mesg_1 = reader.read(16);
-        instance.resp_mesg_2 = reader.read(16);
+        instance._busi_sele = reader.read(2);
+        instance._err_cd = reader.read(1);
+        instance._trade_date = reader.read(12);
+        instance._make_comp_gove_code = reader.read(2);
+        instance._purc_gove_code = reader.read(2);
+        instance._appr_numb = reader.read(8);
+        instance._pg_deal_numb = reader.read(12);
+        instance._regi_id = reader.read(30);
+        instance._resp_mesg_1 = reader.read(16);
+        instance._resp_mesg_2 = reader.read(16);
         return instance;
     }
 
