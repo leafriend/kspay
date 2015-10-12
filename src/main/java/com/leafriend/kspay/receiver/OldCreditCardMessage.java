@@ -57,16 +57,16 @@ public class OldCreditCardMessage implements Message {
 
     public static OldCreditCardMessage parse(MessageReader reader) throws EOFException, IOException {
         OldCreditCardMessage instance = new OldCreditCardMessage();
-        instance.busi_sele = new String(reader.read(2));
-        instance.err_cd = new String(reader.read(1));
-        instance.trade_date = new String(reader.read(12));
-        instance.make_comp_gove_code = new String(reader.read(2));
-        instance.purc_gove_code = new String(reader.read(2));
-        instance.appr_numb = new String(reader.read(8));
-        instance.pg_deal_numb = new String(reader.read(12));
-        instance.regi_id = new String(reader.read(30));
-        instance.resp_mesg_1 = new String(reader.read(16));
-        instance.resp_mesg_2 = new String(reader.read(16));
+        instance.busi_sele = reader.read(2);
+        instance.err_cd = reader.read(1);
+        instance.trade_date = reader.read(12);
+        instance.make_comp_gove_code = reader.read(2);
+        instance.purc_gove_code = reader.read(2);
+        instance.appr_numb = reader.read(8);
+        instance.pg_deal_numb = reader.read(12);
+        instance.regi_id = reader.read(30);
+        instance.resp_mesg_1 = reader.read(16);
+        instance.resp_mesg_2 = reader.read(16);
         return instance;
     }
 

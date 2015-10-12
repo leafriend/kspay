@@ -102,25 +102,25 @@ public class PointMessage implements Message {
 
     public static PointMessage parse(Header header, MessageReader reader) throws EOFException, IOException {
         PointMessage instance = new PointMessage();
-        instance.rApprovalType = new String(reader.read(4));
-        instance.rPTransactionNo = new String(reader.read(12));
-        instance.rPStatus = new String(reader.read(1));
-        instance.rPTradeDate = new String(reader.read(8));
-        instance.rPTradeTime = new String(reader.read(6));
-        instance.rPIssCode = new String(reader.read(6));
-        instance.rPAuthNo = new String(reader.read(12));
-        instance.rPMessage1 = new String(reader.read(16));
-        instance.rPMessage2 = new String(reader.read(16));
-        instance.rPPoint1 = new String(reader.read(9));
-        instance.rPPoint2 = new String(reader.read(9));
-        instance.rPPoint3 = new String(reader.read(9));
-        instance.rPPoint4 = new String(reader.read(9));
-        instance.rPMerchantNo = new String(reader.read(15));
-        instance.rPNotice1 = new String(reader.read(40));
-        instance.rPNotice2 = new String(reader.read(40));
-        instance.rPNotice3 = new String(reader.read(40));
-        instance.rPNotice4 = new String(reader.read(40));
-        instance.rPFiller = new String(reader.read(header.getLength() - reader.getPreface().length));
+        instance.rApprovalType = reader.read(4);
+        instance.rPTransactionNo = reader.read(12);
+        instance.rPStatus = reader.read(1);
+        instance.rPTradeDate = reader.read(8);
+        instance.rPTradeTime = reader.read(6);
+        instance.rPIssCode = reader.read(6);
+        instance.rPAuthNo = reader.read(12);
+        instance.rPMessage1 = reader.read(16);
+        instance.rPMessage2 = reader.read(16);
+        instance.rPPoint1 = reader.read(9);
+        instance.rPPoint2 = reader.read(9);
+        instance.rPPoint3 = reader.read(9);
+        instance.rPPoint4 = reader.read(9);
+        instance.rPMerchantNo = reader.read(15);
+        instance.rPNotice1 = reader.read(40);
+        instance.rPNotice2 = reader.read(40);
+        instance.rPNotice3 = reader.read(40);
+        instance.rPNotice4 = reader.read(40);
+        instance.rPFiller = reader.read(header.getLength() - reader.getPrefaceBytes().length);
         return instance;
     }
 

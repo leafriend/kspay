@@ -82,21 +82,21 @@ public class WorldPassMessage implements Message {
 
     public static WorldPassMessage parse(Header header, MessageReader reader) throws EOFException, IOException {
         WorldPassMessage instance = new WorldPassMessage();
-        instance.rApprovalType = new String(reader.read(4));
-        instance.rWPTransactionNo = new String(reader.read(12));
-        instance.rWPStatus = new String(reader.read(1));
-        instance.rWPTradeDate = new String(reader.read(8));
-        instance.rWPTradeTime = new String(reader.read(6));
-        instance.rWPIssCode = new String(reader.read(6));
-        instance.rWPAuthNo = new String(reader.read(12));
-        instance.rWPBalanceAmount = new String(reader.read(9));
-        instance.rWPLimitAmount = new String(reader.read(9));
-        instance.rWPMessage1 = new String(reader.read(16));
-        instance.rWPMessage2 = new String(reader.read(16));
-        instance.rWPCardNo = new String(reader.read(16));
-        instance.rWPAmount = new String(reader.read(9));
-        instance.rWPMerchantNo = new String(reader.read(15));
-        instance.rWPFiller = new String(reader.read(header.getLength() - reader.getPreface().length));
+        instance.rApprovalType = reader.read(4);
+        instance.rWPTransactionNo = reader.read(12);
+        instance.rWPStatus = reader.read(1);
+        instance.rWPTradeDate = reader.read(8);
+        instance.rWPTradeTime = reader.read(6);
+        instance.rWPIssCode = reader.read(6);
+        instance.rWPAuthNo = reader.read(12);
+        instance.rWPBalanceAmount = reader.read(9);
+        instance.rWPLimitAmount = reader.read(9);
+        instance.rWPMessage1 = reader.read(16);
+        instance.rWPMessage2 = reader.read(16);
+        instance.rWPCardNo = reader.read(16);
+        instance.rWPAmount = reader.read(9);
+        instance.rWPMerchantNo = reader.read(15);
+        instance.rWPFiller = reader.read(header.getLength() - reader.getPrefaceBytes().length);
         return instance;
     }
 

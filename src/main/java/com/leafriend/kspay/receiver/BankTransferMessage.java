@@ -112,27 +112,27 @@ public class BankTransferMessage implements Message {
 
     public static BankTransferMessage parse(Header header, MessageReader reader) throws EOFException, IOException {
         BankTransferMessage instance = new BankTransferMessage();
-        instance.rApprovalType = new String(reader.read(4));
-        instance.rACTransactionNo = new String(reader.read(12));
-        instance.rACStatus = new String(reader.read(1));
-        instance.rACTradeDate = new String(reader.read(8));
-        instance.rACTradeTime = new String(reader.read(6));
-        instance.rACAcctSele = new String(reader.read(1));
-        instance.rACFeeSele = new String(reader.read(1));
-        instance.rACInjaName = new String(reader.read(16));
-        instance.rACPareBankCode = new String(reader.read(6));
-        instance.rACPareAcctNo = new String(reader.read(15));
-        instance.rACCustBankCode = new String(reader.read(6));
-        instance.rACCustAcctNo = new String(reader.read(15));
-        instance.rACAmount = new String(reader.read(13));
-        instance.rACBankTransactionNo = new String(reader.read(30));
-        instance.rACIpgumNm = new String(reader.read(20));
-        instance.rACBankFee = new String(reader.read(13));
-        instance.rACBankAmount = new String(reader.read(13));
-        instance.rACBankRespCode = new String(reader.read(4));
-        instance.rACMessage1 = new String(reader.read(16));
-        instance.rACMessage2 = new String(reader.read(16));
-        instance.rACFiller = new String(reader.read(header.getLength() - reader.getPreface().length));
+        instance.rApprovalType = reader.read(4);
+        instance.rACTransactionNo = reader.read(12);
+        instance.rACStatus = reader.read(1);
+        instance.rACTradeDate = reader.read(8);
+        instance.rACTradeTime = reader.read(6);
+        instance.rACAcctSele = reader.read(1);
+        instance.rACFeeSele = reader.read(1);
+        instance.rACInjaName = reader.read(16);
+        instance.rACPareBankCode = reader.read(6);
+        instance.rACPareAcctNo = reader.read(15);
+        instance.rACCustBankCode = reader.read(6);
+        instance.rACCustAcctNo = reader.read(15);
+        instance.rACAmount = reader.read(13);
+        instance.rACBankTransactionNo = reader.read(30);
+        instance.rACIpgumNm = reader.read(20);
+        instance.rACBankFee = reader.read(13);
+        instance.rACBankAmount = reader.read(13);
+        instance.rACBankRespCode = reader.read(4);
+        instance.rACMessage1 = reader.read(16);
+        instance.rACMessage2 = reader.read(16);
+        instance.rACFiller = reader.read(header.getLength() - reader.getPrefaceBytes().length);
         return instance;
     }
 
