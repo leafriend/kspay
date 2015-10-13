@@ -24,7 +24,7 @@ public class MessageParser {
      * @param reader
      *            바이트 배열을 읽을 리더
      * @param parseOpCode
-     *            TODO
+     *            운영코드(서버 종료 등)을 해석할지 여부
      *
      * @return 바이트 배열에서 해석한 전문 인스턴스; 해석하지 못한 경우 <code>null</code>
      *

@@ -41,8 +41,11 @@ public class Receiver implements Runnable {
 
     /**
      * 주어진 입/출력스트림으로 수/송신하고, 주어진 처리기로 해석한 전문을 처리하는 인스턴스를 생성한다.
-     * @param parseOpCode TODO
-     * @param daemon TODO
+     *
+     * @param parseOpCode
+     *            운영코드(서버 종료 등)을 해석할지 여부
+     * @param daemon
+     *            운영코드를 실행항 기동 중인 서버 인스턴스
      * @param input
      *            수신용 입력스트림
      * @param output
