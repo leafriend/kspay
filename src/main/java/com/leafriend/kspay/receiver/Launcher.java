@@ -14,16 +14,44 @@ public class Launcher {
 
     private static final int DEFAULT_PORT = 29992;
 
+    private int port = DEFAULT_PORT;
+
+    private boolean isShutdownCommand = false;
+
+    private boolean isHelpCommand = false;
+
     public static void main(String[] args) {
-        int port = DEFAULT_PORT;
+        Launcher launcher = parse(args);
+        if (launcher == null)
+            return;
+
+        if (launcher.isHelpCommand) {
+            // TODO call help
+            return;
+        }
+
+        if (launcher.isShutdownCommand) {
+            // TODO call shutdown
+            return;
+        }
+
+        launcher.launch();
+    }
+
+    public static Launcher parse(String[] args) {
+        Launcher instance = new Launcher();
         if (args.length > 0) {
             try {
-                port = Integer.parseInt(args[0]);
+                instance.port = Integer.parseInt(args[0]);
             } catch (NumberFormatException e) {
                 LOGGER.error("Illegal port value: {}", args[0]);
-                return;
+                return null;
             }
         }
+        return instance;
+    }
+
+    public void launch() {
         Daemon daemon = new Daemon(port);
         new Thread(daemon).start();
     }
