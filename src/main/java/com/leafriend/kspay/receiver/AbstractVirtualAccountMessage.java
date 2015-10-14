@@ -162,4 +162,8 @@ public abstract class AbstractVirtualAccountMessage extends AbstractMessage {
      */
     protected String _filler_2;
 
+    public String getTransactionNo() {
+        return _rVTransactionNo.trim();
+    }
+
 }
