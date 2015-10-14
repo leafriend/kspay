@@ -88,8 +88,34 @@ public class Launcher {
 
     public static List<MessageHandler> loadHandlers(Properties properties) {
         List<MessageHandler> list = new ArrayList<MessageHandler>();
-        list.add(new LogginMessageHandler());
+        String[] handerlNames = properties.getProperty("server.handlers", "").split(",");
+        for (String handerlName : handerlNames) {
+            MessageHandler handler = loadHandler(handerlName);
+            if (handler != null)
+                list.add(handler);
+        }
         return list;
+    }
+
+    public static MessageHandler loadHandler(String handlerName) {
+        handlerName = handlerName.trim();
+        try {
+            Class<?> handlerClass = Class.forName(handlerName);
+            MessageHandler handler = (MessageHandler) handlerClass.newInstance();
+            return handler;
+        } catch (ClassNotFoundException e) {
+            LOGGER.warn("Failed to load handler class '" + handlerName + "'", e);
+            return null;
+        } catch (ClassCastException e) {
+            LOGGER.warn("Handler class ''" + handlerName + "' is not a '" + MessageHandler.class.getName() + "", e);
+            return null;
+        } catch (InstantiationException e) {
+            LOGGER.warn("Failed to instantiate handler ''" + handlerName + "'", handlerName);
+            return null;
+        } catch (IllegalAccessException e) {
+            LOGGER.warn("Failed to instantiate handler ''" + handlerName + "'", handlerName);
+            return null;
+        }
     }
 
 }
