@@ -81,12 +81,12 @@ public class Launcher {
     public void launch() {
         int port = Integer.parseInt(properties.getProperty("server.port"));
         Daemon daemon = new Daemon(port);
-        List<MessageHandler> handlers = loadHandlers(properties);
+        List<MessageHandler> handlers = loadHandlers();
         daemon.setHandlers(handlers);
         new Thread(daemon).start();
     }
 
-    public static List<MessageHandler> loadHandlers(Properties properties) {
+    public List<MessageHandler> loadHandlers() {
         List<MessageHandler> list = new ArrayList<MessageHandler>();
         String[] handerlNames = properties.getProperty("server.handlers", "").split(",");
         for (String handerlName : handerlNames) {
@@ -97,7 +97,7 @@ public class Launcher {
         return list;
     }
 
-    public static MessageHandler loadHandler(String handlerName) {
+    public MessageHandler loadHandler(String handlerName) {
         handlerName = handlerName.trim();
         try {
             Class<?> handlerClass = Class.forName(handlerName);
