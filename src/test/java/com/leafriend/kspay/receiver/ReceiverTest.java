@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Properties;
 
 import org.junit.After;
 import org.junit.Before;
@@ -34,6 +35,14 @@ public class ReceiverTest {
         input = new ByteArrayInputStream(MESSAGE);
         output = new ByteArrayOutputStream();
         handler = new MessageHandler() {
+
+            @Override
+            public void setProperties(Properties properties) {
+            }
+
+            @Override
+            public void init() {
+            }
 
             @Override
             public boolean isHandleable(Message message) {

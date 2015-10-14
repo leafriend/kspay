@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,16 @@ public class LogginMessageHandler implements MessageHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(LogginMessageHandler.class);
 
     private final Map<Class<?>, List<Field>> classFields = new HashMap<Class<?>, List<Field>>();
+
+    @Override
+    public void setProperties(Properties properties) {
+        // DO NOTHING
+    }
+
+    @Override
+    public void init() {
+        // DO NOTHING
+    }
 
     @Override
     public boolean isHandleable(Message message) {
