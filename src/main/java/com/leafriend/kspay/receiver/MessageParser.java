@@ -63,7 +63,8 @@ public class MessageParser {
 
     static Message parseOldMessage(MessageReader reader) throws EOFException, IOException {
 
-        String type = new String(reader.read(TYPE_LEN));
+        reader.read(TYPE_LEN - 1); // TODO 이미 읽은 헤더 처리를 이렇게 하는 게 맞는지?
+        String type = reader.getPreface();
 
         if (Pattern.matches("^[CIF][BD]$", type))
             return OldCreditCardMessage.parse(reader);
