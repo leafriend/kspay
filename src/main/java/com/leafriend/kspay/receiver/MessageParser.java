@@ -56,7 +56,7 @@ public class MessageParser {
     }
 
     private static Message parseOpCode(MessageReader reader) throws EOFException, IOException {
-        if (reader.readBytes(1)[0] == (byte) 0x1B)
+        if (reader.readBytes(1)[0] == ShutdownMessage.SHUTDOWN_OPCODE)
             return new ShutdownMessage();
         return NOT_PARSED;
     }
