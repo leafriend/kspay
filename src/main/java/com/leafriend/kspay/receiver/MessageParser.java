@@ -41,6 +41,8 @@ public class MessageParser {
             message = parseOpCode(reader);
             if (message != NOT_PARSED)
                 return message;
+        } else {
+            reader.read(1); // FIXME parseOpCode() 호출때문에 불필요한 호출
         }
 
         message = parseOldMessage(reader);
