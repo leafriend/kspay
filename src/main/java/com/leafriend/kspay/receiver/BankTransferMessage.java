@@ -3,8 +3,6 @@ package com.leafriend.kspay.receiver;
 import java.io.EOFException;
 import java.io.IOException;
 
-import org.h2.command.dml.SelectOrderBy;
-
 public class BankTransferMessage extends AbstractMessage {
 
     /**
