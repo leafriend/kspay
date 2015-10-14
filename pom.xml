@@ -97,6 +97,9 @@
                 </program>
               </programs>
               <copyConfigurationDirectory>true</copyConfigurationDirectory>
+              <!-- useWildcardClassPath 옵션을 true로 할 경우 필요 -->
+              <repositoryLayout>flat</repositoryLayout>
+              <useWildcardClassPath>true</useWildcardClassPath>
             </configuration>
           </plugin>
 
