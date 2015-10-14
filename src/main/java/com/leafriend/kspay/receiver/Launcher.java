@@ -102,6 +102,8 @@ public class Launcher {
         try {
             Class<?> handlerClass = Class.forName(handlerName);
             MessageHandler handler = (MessageHandler) handlerClass.newInstance();
+            handler.setProperties(properties);
+            handler.init();
             return handler;
         } catch (ClassNotFoundException e) {
             LOGGER.warn("Failed to load handler class '" + handlerName + "'", e);

@@ -1,5 +1,7 @@
 package com.leafriend.kspay.receiver;
 
+import java.util.Properties;
+
 /**
  * 전문({@link Message})를 처리하는 인터페이스다. 이 인터페이스를 구현하여 데이터베이스에 기록하거나 결제 내역을 처리하는 업무를
  * 수행하면 된다.
@@ -7,6 +9,19 @@ package com.leafriend.kspay.receiver;
  * @author leafriend
  */
 public interface MessageHandler {
+
+    /**
+     * 전역 설정을 핸들러에서 사용할 수 있도록 지정한다.
+     *
+     * @param properties
+     *            전역 설정
+     */
+    void setProperties(Properties properties);
+
+    /**
+     * 핸들러를 초기화 한다.
+     */
+    void init();
 
     /**
      * 인수로 전문을 처리할 수 있는지 반환한다.
