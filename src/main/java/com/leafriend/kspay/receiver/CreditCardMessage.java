@@ -3,7 +3,7 @@ package com.leafriend.kspay.receiver;
 import java.io.EOFException;
 import java.io.IOException;
 
-public class CreditCardMessage implements Message {
+public class CreditCardMessage extends AbstractMessage {
     /**
      *
      */
@@ -168,6 +168,7 @@ public class CreditCardMessage implements Message {
         instance._rMPIPositionType = reader.read(1);
         instance._rMPIReUseType = reader.read(1);
         instance._rFiller_1 = reader.read(header.getLength() - reader.getPrefaceBytes().length);
+        instance.setBytes(reader.getPrefaceBytes());
         return instance;
     }
 

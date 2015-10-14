@@ -3,7 +3,9 @@ package com.leafriend.kspay.receiver;
 import java.io.EOFException;
 import java.io.IOException;
 
-public class BankTransferMessage implements Message {
+import org.h2.command.dml.SelectOrderBy;
+
+public class BankTransferMessage extends AbstractMessage {
 
     /**
      * ~0 : 승인, ~1 : 취소
@@ -133,6 +135,7 @@ public class BankTransferMessage implements Message {
         instance._rACMessage1 = reader.read(16);
         instance._rACMessage2 = reader.read(16);
         instance._rACFiller = reader.read(header.getLength() - reader.getPrefaceBytes().length);
+        instance.setBytes(reader.getPrefaceBytes());
         return instance;
     }
 

@@ -1,6 +1,6 @@
 package com.leafriend.kspay.receiver;
 
-public abstract class AbstractVirtualAccountMessage implements Message {
+public abstract class AbstractVirtualAccountMessage extends AbstractMessage {
 
     /**
      * 거래번호

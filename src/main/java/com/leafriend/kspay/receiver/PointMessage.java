@@ -3,7 +3,7 @@ package com.leafriend.kspay.receiver;
 import java.io.EOFException;
 import java.io.IOException;
 
-public class PointMessage implements Message {
+public class PointMessage extends AbstractMessage {
 
     /**
      * 0~: 적립, 1~: 사용 / ~0: 승인, ~1: 취소
@@ -121,6 +121,7 @@ public class PointMessage implements Message {
         instance._rPNotice3 = reader.read(40);
         instance._rPNotice4 = reader.read(40);
         instance._rPFiller = reader.read(header.getLength() - reader.getPrefaceBytes().length);
+        instance.setBytes(reader.getPrefaceBytes());
         return instance;
     }
 

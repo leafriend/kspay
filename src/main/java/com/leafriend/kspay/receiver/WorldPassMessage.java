@@ -3,7 +3,7 @@ package com.leafriend.kspay.receiver;
 import java.io.EOFException;
 import java.io.IOException;
 
-public class WorldPassMessage implements Message {
+public class WorldPassMessage extends AbstractMessage {
 
     /**
      * 승인구분 코드
@@ -97,6 +97,7 @@ public class WorldPassMessage implements Message {
         instance._rWPAmount = reader.read(9);
         instance._rWPMerchantNo = reader.read(15);
         instance._rWPFiller = reader.read(header.getLength() - reader.getPrefaceBytes().length);
+        instance.setBytes(reader.getPrefaceBytes());
         return instance;
     }
 

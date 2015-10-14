@@ -3,7 +3,7 @@ package com.leafriend.kspay.receiver;
 import java.io.EOFException;
 import java.io.IOException;
 
-public class OldCreditCardMessage implements Message {
+public class OldCreditCardMessage extends AbstractMessage {
 
     /**
      * ~B:승인요청, ~D:취소응답
@@ -67,6 +67,7 @@ public class OldCreditCardMessage implements Message {
         instance._regi_id = reader.read(30);
         instance._resp_mesg_1 = reader.read(16);
         instance._resp_mesg_2 = reader.read(16);
+        instance.setBytes(reader.getPrefaceBytes());
         return instance;
     }
 

@@ -45,6 +45,7 @@ public class OldVirtualAccountMessage extends AbstractVirtualAccountMessage {
         instance._deal_star_time = reader.read(6);
         instance._acco_seri_no = reader.read(6);
         instance._filler_2 = reader.read(48);
+        instance.setBytes(reader.getPrefaceBytes());
         return instance;
     }
 
