@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import org.slf4j.Logger;
@@ -79,7 +81,15 @@ public class Launcher {
     public void launch() {
         int port = Integer.parseInt(properties.getProperty("server.port"));
         Daemon daemon = new Daemon(port);
+        List<MessageHandler> handlers = loadHandlers(properties);
+        daemon.setHandlers(handlers);
         new Thread(daemon).start();
+    }
+
+    public static List<MessageHandler> loadHandlers(Properties properties) {
+        List<MessageHandler> list = new ArrayList<MessageHandler>();
+        list.add(new LogginMessageHandler());
+        return list;
     }
 
 }
