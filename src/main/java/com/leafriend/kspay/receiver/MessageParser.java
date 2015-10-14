@@ -26,7 +26,7 @@ public class MessageParser {
      * @param parseOpCode
      *            운영코드(서버 종료 등)을 해석할지 여부
      *
-     * @return 바이트 배열에서 해석한 전문 인스턴스; 해석하지 못한 경우 <code>null</code>
+     * @return 바이트 배열에서 해석한 전문 인스턴스; 해석하지 못한 경우 {@link UnknownMessage} 인스턴스를 반환
      *
      * @throws EOFException
      *             리더에서 바이트 배열을 읽다 예상하지 못한 끝에 이른 경우 발생
@@ -51,7 +51,7 @@ public class MessageParser {
         if (message != NOT_PARSED)
             return message;
 
-        return NOT_PARSED;
+        return new UnknownMessage(reader);
 
     }
 
