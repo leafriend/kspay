@@ -57,7 +57,7 @@ public class OldCreditCardMessage implements Message {
 
     public static OldCreditCardMessage parse(MessageReader reader) throws EOFException, IOException {
         OldCreditCardMessage instance = new OldCreditCardMessage();
-        instance._busi_sele = reader.getPreface();
+        instance._busi_sele = reader.getPreface(); // TODO 이미 읽은 헤더 처리를 이렇게 하는 게 맞는지?
         instance._err_cd = reader.read(1);
         instance._trade_date = reader.read(12);
         instance._make_comp_gove_code = reader.read(2);

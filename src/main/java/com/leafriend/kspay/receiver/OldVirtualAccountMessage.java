@@ -12,7 +12,7 @@ public class OldVirtualAccountMessage extends AbstractVirtualAccountMessage {
 
     public static OldVirtualAccountMessage parse(MessageReader reader) throws EOFException, IOException {
         OldVirtualAccountMessage instance = new OldVirtualAccountMessage();
-        instance._busi_sele = reader.getPreface();
+        instance._busi_sele = reader.getPreface(); // TODO 이미 읽은 헤더 처리를 이렇게 하는 게 맞는지?
         instance._rVTransactionNo = reader.read(12);
         instance._deal_code = reader.read(9);
         instance._comp_code = reader.read(8);

@@ -49,6 +49,7 @@ public class HeaderTest {
         byte[] buf = message.getBytes(MessageReader.DEFAULT_CHARSET);
         InputStream input = new ByteArrayInputStream(buf);
         MessageReader reader = new MessageReader(input, MessageReader.DEFAULT_CHARSET);
+        reader.read(4);
         Header header = Header.parse(reader);
         return header;
     }
