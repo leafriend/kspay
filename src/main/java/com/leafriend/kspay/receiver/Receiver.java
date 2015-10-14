@@ -86,6 +86,10 @@ public class Receiver implements Runnable {
     void parseAndHandle() throws EOFException, IOException {
         MessageReader reader = new MessageReader(input, DEFAULT_CHARSET);
         Message message = MessageParser.parse(reader, parseOpCode);
+        if (message instanceof ShutdownMessage) {
+            daemon.stop();
+            return;
+        }
         for (MessageHandler handler : handlers) {
             try {
                 if (handler.isHandleable(message))
@@ -93,9 +97,6 @@ public class Receiver implements Runnable {
             } catch (RuntimeException e) {
                 LOGGER.error("Failed to handle", e);
             }
-        }
-        if (message instanceof ShutdownMessage) {
-            daemon.stop();
         }
     }
 
