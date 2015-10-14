@@ -117,6 +117,9 @@ public class Launcher {
         } catch (IllegalAccessException e) {
             LOGGER.warn("Failed to instantiate handler ''" + handlerName + "'", handlerName);
             return null;
+        } catch (Exception e) {
+            LOGGER.warn("Failed to instantiate handler ''" + handlerName + "'", handlerName);
+            return null;
         }
     }
 

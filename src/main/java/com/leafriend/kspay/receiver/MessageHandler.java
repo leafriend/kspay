@@ -21,7 +21,7 @@ public interface MessageHandler {
     /**
      * 핸들러를 초기화 한다.
      */
-    void init();
+    void init() throws Exception;
 
     /**
      * 인수로 전문을 처리할 수 있는지 반환한다.
