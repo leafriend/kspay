@@ -1,5 +1,10 @@
 package com.leafriend.kspay.receiver;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public abstract class AbstractVirtualAccountMessage extends AbstractMessage {
 
     /**
@@ -164,6 +169,15 @@ public abstract class AbstractVirtualAccountMessage extends AbstractMessage {
 
     public String getTransactionNo() {
         return _rVTransactionNo.trim();
+    }
+
+    public Date getTransferTime() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        try {
+            return dateFormat.parse(_tran_date + _tran_time);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
