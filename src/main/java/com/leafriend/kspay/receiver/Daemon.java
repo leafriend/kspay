@@ -24,9 +24,12 @@ public class Daemon implements Runnable {
 
     private List<MessageHandler> handlers;
 
+    private List<Runnable> shutdownCallback;
+
     public Daemon(int port) {
         this.port = port;
         handlers = new ArrayList<MessageHandler>();
+        shutdownCallback = new ArrayList<Runnable>();
     }
 
     @Override
@@ -62,6 +65,10 @@ public class Daemon implements Runnable {
             }
         }
         LOGGER.info("Server is stopped.");
+        for (Runnable callback : shutdownCallback) {
+            LOGGER.debug("Running shutdown callback: {}", callback);
+            new Thread(callback).start();
+        }
     }
 
     private boolean isLocalClient(Socket client) {
@@ -81,6 +88,10 @@ public class Daemon implements Runnable {
 
     public void setHandlers(List<MessageHandler> handlers) {
         this.handlers = handlers;
+    }
+
+    public void addShutdownCallback(Runnable callback) {
+        shutdownCallback.add(callback);
     }
 
 }
