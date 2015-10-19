@@ -12,6 +12,7 @@ import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// FIXME KSPay에서 결제가 이뤄지고 통보가 오기까지 얼마나 걸리는가?
 /**
  * 서버 데몬을 시작하는 실행기 클래스다.
  *
