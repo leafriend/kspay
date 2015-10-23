@@ -33,9 +33,9 @@ public class DaemonTest {
         new Thread(daemon).start();
 
         // When
-        Thread.sleep(100);
+        Thread.sleep(200);
         daemon.stop();
-        Thread.sleep(100);
+        Thread.sleep(200);
 
         // Then
         assertThat("Callback is called", callback.isCalled, is(true));
